@@ -741,235 +741,235 @@ readme_directory = <%= @readme_directory %>
 # Block users from recieving outbound mail - users listed in /etc/postfix/bad_recipients
 smtpd_recipient_restrictions = check_recipient_access <%= @smtpd_recipient_restrictions_list %>, permit_mynetworks, reject_unauth_destination, permit  
 
-<% if @ssl -%>
-# TLS stuff
-smtpd_use_tls = yes
-smtpd_tls_loglevel = 1
-<% if @smtpd_tls_key_file -%>
-smtpd_tls_key_file = <%= @smtpd_tls_key_file %>
-<% else -%>
-smtpd_tls_key_file = /etc/pki/tls/private/<%= @ssl %>.key
-<% end -%>
-<% if @smtpd_tls_cert_file -%>
-smtpd_tls_cert_file = <%= @smtpd_tls_cert_file %>
-<% else -%>
-smtpd_tls_cert_file = /etc/pki/tls/certs/<%= @ssl %>.crt
-<% end -%>
-<% if @smtpd_tls_CAfile -%>
-smtpd_tls_CAfile = <%= @smtpd_tls_CAfile %>
-<% end -%>
-<% if @smtpd_tls_ask_ccert -%>
-smtpd_tls_ask_ccert = yes
-<% end -%>
-<% if @tls_append_default_CA -%>
-tls_append_default_CA = yes
-<% end -%>
+# <% if @ssl -%>
+# # TLS stuff
+# smtpd_use_tls = yes
+# smtpd_tls_loglevel = 1
+# <% if @smtpd_tls_key_file -%>
+# smtpd_tls_key_file = <%= @smtpd_tls_key_file %>
+# <% else -%>
+# smtpd_tls_key_file = /etc/pki/tls/private/<%= @ssl %>.key
+# <% end -%>
+# <% if @smtpd_tls_cert_file -%>
+# smtpd_tls_cert_file = <%= @smtpd_tls_cert_file %>
+# <% else -%>
+# smtpd_tls_cert_file = /etc/pki/tls/certs/<%= @ssl %>.crt
+# <% end -%>
+# <% if @smtpd_tls_CAfile -%>
+# smtpd_tls_CAfile = <%= @smtpd_tls_CAfile %>
+# <% end -%>
+# <% if @smtpd_tls_ask_ccert -%>
+# smtpd_tls_ask_ccert = yes
+# <% end -%>
+# <% if @tls_append_default_CA -%>
+# tls_append_default_CA = yes
+# <% end -%>
 
-<% end -%>
-<% if @smtpd_sasl_auth -%>
-# Auth against external daemon (usually dovecot or cyrus)
-smtpd_sasl_auth_enable = yes
-smtpd_sasl_type = <%= @smtpd_sasl_type %>
-smtpd_sasl_path = <%= @smtpd_sasl_path %>
+# <% end -%>
+# <% if @smtpd_sasl_auth -%>
+# # Auth against external daemon (usually dovecot or cyrus)
+# smtpd_sasl_auth_enable = yes
+# smtpd_sasl_type = <%= @smtpd_sasl_type %>
+# smtpd_sasl_path = <%= @smtpd_sasl_path %>
 
-<% end -%>
-<% if @smtp_sasl_auth -%>
-# Client auth against SMTP gateway
-smtp_sasl_auth_enable = yes
-<% if @smtp_sasl_password_maps -%>
-smtp_sasl_password_maps = <%= @smtp_sasl_password_maps %>
-<% end -%>
-<% if @smtp_sasl_security_options -%>
-smtp_sasl_security_options = <%= @smtp_sasl_security_options %>
-<% end -%>
+# <% end -%>
+# <% if @smtp_sasl_auth -%>
+# # Client auth against SMTP gateway
+# smtp_sasl_auth_enable = yes
+# <% if @smtp_sasl_password_maps -%>
+# smtp_sasl_password_maps = <%= @smtp_sasl_password_maps %>
+# <% end -%>
+# <% if @smtp_sasl_security_options -%>
+# smtp_sasl_security_options = <%= @smtp_sasl_security_options %>
+# <% end -%>
 
-<% end -%>
-<% if @smtp_sasl_tls or @smtp_use_tls -%>
-smtp_use_tls = yes
-<% if @smtp_tls_CAfile -%>
-smtp_tls_CAfile = <%= @smtp_tls_CAfile %>
-<% end -%>
-<% if @smtp_tls_CApath -%>
-smtp_tls_CApath = <%= @smtp_tls_CApath %>
-<% end -%>
-<% if @smtp_tls_security_level -%>
-smtp_tls_security_level = <%= @smtp_tls_security_level %>
-<% end -%>
-<% if @smtp_tls_key_file -%>
-smtp_tls_key_file = <%= @smtp_tls_key_file %>
-<% end -%>
-<% if @smtp_tls_cert_file -%>
-smtp_tls_cert_file = <%= @smtp_tls_cert_file %>
-<% end -%>
-<% if @smtp_tls_secure_cert_match -%>
-smtp_tls_secure_cert_match = <%= @smtp_tls_secure_cert_match %>
-<% end -%>
-<% if @smtp_tls_note_starttls_offer -%>
-smtp_tls_note_starttls_offer = yes
-<% end -%>
-<% if @smtp_tls_mandatory_ciphers -%>
-smtp_tls_mandatory_ciphers = <%= @smtp_tls_mandatory_ciphers %>
-<% end -%>
+# <% end -%>
+# <% if @smtp_sasl_tls or @smtp_use_tls -%>
+# smtp_use_tls = yes
+# <% if @smtp_tls_CAfile -%>
+# smtp_tls_CAfile = <%= @smtp_tls_CAfile %>
+# <% end -%>
+# <% if @smtp_tls_CApath -%>
+# smtp_tls_CApath = <%= @smtp_tls_CApath %>
+# <% end -%>
+# <% if @smtp_tls_security_level -%>
+# smtp_tls_security_level = <%= @smtp_tls_security_level %>
+# <% end -%>
+# <% if @smtp_tls_key_file -%>
+# smtp_tls_key_file = <%= @smtp_tls_key_file %>
+# <% end -%>
+# <% if @smtp_tls_cert_file -%>
+# smtp_tls_cert_file = <%= @smtp_tls_cert_file %>
+# <% end -%>
+# <% if @smtp_tls_secure_cert_match -%>
+# smtp_tls_secure_cert_match = <%= @smtp_tls_secure_cert_match %>
+# <% end -%>
+# <% if @smtp_tls_note_starttls_offer -%>
+# smtp_tls_note_starttls_offer = yes
+# <% end -%>
+# <% if @smtp_tls_mandatory_ciphers -%>
+# smtp_tls_mandatory_ciphers = <%= @smtp_tls_mandatory_ciphers %>
+# <% end -%>
 
-<% end -%>
-<% if @mail_name -%>
-# Change the mail daemon name
-mail_name = <%= @mail_name %>
+# <% end -%>
+# <% if @mail_name -%>
+# # Change the mail daemon name
+# mail_name = <%= @mail_name %>
 
-<% end -%>
-<% if @mailbox_size_limit -%>
-# Mailbox size limit
-mailbox_size_limit = <%= @mailbox_size_limit %>
+# <% end -%>
+# <% if @mailbox_size_limit -%>
+# # Mailbox size limit
+# mailbox_size_limit = <%= @mailbox_size_limit %>
 
-<% end -%>
-<% if @message_size_limit -%>
-# Message size limit
-message_size_limit = <%= @message_size_limit %>
+# <% end -%>
+# <% if @message_size_limit -%>
+# # Message size limit
+# message_size_limit = <%= @message_size_limit %>
 
-<% end -%>
-# Make nobody redirect to /dev/null work
-allow_mail_to_files = alias
+# <% end -%>
+# # Make nobody redirect to /dev/null work
+# allow_mail_to_files = alias
 
-<% if @virtual_alias_domains -%>
-virtual_alias_domains =
-<% @virtual_alias_domains.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% if @virtual_alias_domains -%>
+# virtual_alias_domains =
+# <% @virtual_alias_domains.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if @virtual_alias_maps -%>
-virtual_alias_maps =
-<% @virtual_alias_maps.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if @virtual_alias_maps -%>
+# virtual_alias_maps =
+# <% @virtual_alias_maps.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if @virtual_mailbox_domains -%>
-virtual_mailbox_domains =
-<% @virtual_mailbox_domains.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if @virtual_mailbox_domains -%>
+# virtual_mailbox_domains =
+# <% @virtual_mailbox_domains.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if @virtual_mailbox_maps -%>
-virtual_mailbox_maps =
-<% @virtual_mailbox_maps.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if @virtual_mailbox_maps -%>
+# virtual_mailbox_maps =
+# <% @virtual_mailbox_maps.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if @virtual_mailbox_base -%>
-virtual_mailbox_base = <%= @virtual_mailbox_base %>
+# <% end -%>
+# <% if @virtual_mailbox_base -%>
+# virtual_mailbox_base = <%= @virtual_mailbox_base %>
 
-<% end -%>
-<% if @virtual_uid_maps -%>
-virtual_uid_maps = <%= @virtual_uid_maps %>
+# <% end -%>
+# <% if @virtual_uid_maps -%>
+# virtual_uid_maps = <%= @virtual_uid_maps %>
 
-<% end -%>
-<% if @virtual_gid_maps -%>
-virtual_gid_maps = <%= @virtual_gid_maps %>
+# <% end -%>
+# <% if @virtual_gid_maps -%>
+# virtual_gid_maps = <%= @virtual_gid_maps %>
 
-<% end -%>
-<% if @virtual_transport -%>
-virtual_transport = <%= @virtual_transport %>
-<% if @virtual_transport == 'dovecot' -%>
-dovecot_destination_recipient_limit = 1
+# <% end -%>
+# <% if @virtual_transport -%>
+# virtual_transport = <%= @virtual_transport %>
+# <% if @virtual_transport == 'dovecot' -%>
+# dovecot_destination_recipient_limit = 1
 
-<% end -%>
-<% end -%>
-# SMTP restrictions (block bogus stuff)
-<% if @smtpd_helo_required -%>
-smtpd_helo_required = yes
-<% end -%>
-<% if !@smtpd_helo_restrictions.empty? -%>
-smtpd_helo_restrictions =
-<% @smtpd_helo_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% end -%>
+# # SMTP restrictions (block bogus stuff)
+# <% if @smtpd_helo_required -%>
+# smtpd_helo_required = yes
+# <% end -%>
+# <% if !@smtpd_helo_restrictions.empty? -%>
+# smtpd_helo_restrictions =
+# <% @smtpd_helo_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if !@smtpd_sender_restrictions.empty? -%>
-smtpd_sender_restrictions =
-<% @smtpd_sender_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if !@smtpd_sender_restrictions.empty? -%>
+# smtpd_sender_restrictions =
+# <% @smtpd_sender_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if @smtpd_delay_reject -%>
-smtpd_delay_reject = <%= @smtpd_delay_reject %>
+# <% end -%>
+# <% if @smtpd_delay_reject -%>
+# smtpd_delay_reject = <%= @smtpd_delay_reject %>
 
-<% end -%>
-<% if !@smtpd_client_restrictions.empty? -%>
-smtpd_client_restrictions =
-<% @smtpd_client_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if !@smtpd_client_restrictions.empty? -%>
+# smtpd_client_restrictions =
+# <% @smtpd_client_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if !@smtpd_recipient_restrictions.empty? or @postgrey -%>
-smtpd_recipient_restrictions =
-<% @smtpd_recipient_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
-<% if @postgrey_policy_service -%>
-  check_policy_service <%= @postgrey_policy_service %>,
-<% else -%>
-  check_policy_service unix:postgrey/socket,
-<% end -%>
+# <% end -%>
+# <% if !@smtpd_recipient_restrictions.empty? or @postgrey -%>
+# smtpd_recipient_restrictions =
+# <% @smtpd_recipient_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
+# <% if @postgrey_policy_service -%>
+#   check_policy_service <%= @postgrey_policy_service %>,
+# <% else -%>
+#   check_policy_service unix:postgrey/socket,
+# <% end -%>
 
-<% end -%>
-<% if !@smtpd_data_restrictions.empty? -%>
-smtpd_data_restrictions =
-<% @smtpd_data_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if !@smtpd_data_restrictions.empty? -%>
+# smtpd_data_restrictions =
+# <% @smtpd_data_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-<% if !@smtpd_end_of_data_restrictions.empty? -%>
-smtpd_end_of_data_restrictions =
-<% @smtpd_end_of_data_restrictions.each do |line| -%>
-  <%= line %>,
-<% end -%>
+# <% end -%>
+# <% if !@smtpd_end_of_data_restrictions.empty? -%>
+# smtpd_end_of_data_restrictions =
+# <% @smtpd_end_of_data_restrictions.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
 
-<% end -%>
-body_checks = regexp:<%= @config_directory %>/body_checks
+# <% end -%>
+# body_checks = regexp:<%= @config_directory %>/body_checks
 
-<% if @canonical_maps -%>
-canonical_maps = <%= @canonical_maps %>
+# <% if @canonical_maps -%>
+# canonical_maps = <%= @canonical_maps %>
 
-<% end -%>
-<% if @sender_canonical_maps -%>
-sender_canonical_maps = <%= @sender_canonical_maps %>
+# <% end -%>
+# <% if @sender_canonical_maps -%>
+# sender_canonical_maps = <%= @sender_canonical_maps %>
 
-<% end -%>
-<% if @smtp_generic_maps -%>
-smtp_generic_maps = <%= @smtp_generic_maps %>
+# <% end -%>
+# <% if @smtp_generic_maps -%>
+# smtp_generic_maps = <%= @smtp_generic_maps %>
 
-<% end -%>
-<% if @postscreen -%>
-# Postscreen configuration
-postscreen_access_list =
-<% @postscreen_access_list.each do |line| -%>
-  <%= line %>,
-<% end -%>
-postscreen_blacklist_action = <%= @postscreen_blacklist_action %>
-postscreen_cache_map = <%= @postscreen_cache_map %>
-postscreen_greet_wait = <%= @postscreen_greet_wait %>
-postscreen_greet_banner = <%= @postscreen_greet_banner %>
-postscreen_greet_action = <%= @postscreen_greet_action %>
-postscreen_dnsbl_sites =
-<% @postscreen_dnsbl_sites.each do |line| -%>
-  <%= line %>,
-<% end -%>
-postscreen_dnsbl_reply_map = <%= @postscreen_dnsbl_reply_map %>
-postscreen_dnsbl_threshold = <%= @postscreen_dnsbl_threshold %>
-postscreen_dnsbl_action = <%= @postscreen_dnsbl_action %>
+# <% end -%>
+# <% if @postscreen -%>
+# # Postscreen configuration
+# postscreen_access_list =
+# <% @postscreen_access_list.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
+# postscreen_blacklist_action = <%= @postscreen_blacklist_action %>
+# postscreen_cache_map = <%= @postscreen_cache_map %>
+# postscreen_greet_wait = <%= @postscreen_greet_wait %>
+# postscreen_greet_banner = <%= @postscreen_greet_banner %>
+# postscreen_greet_action = <%= @postscreen_greet_action %>
+# postscreen_dnsbl_sites =
+# <% @postscreen_dnsbl_sites.each do |line| -%>
+#   <%= line %>,
+# <% end -%>
+# postscreen_dnsbl_reply_map = <%= @postscreen_dnsbl_reply_map %>
+# postscreen_dnsbl_threshold = <%= @postscreen_dnsbl_threshold %>
+# postscreen_dnsbl_action = <%= @postscreen_dnsbl_action %>
 
-<% end -%>
-<% if ! @extra_main_parameters.empty? -%>
-# Parameters set using 'extra_main_parameters'
-<% @extra_main_parameters.sort_by {|key,value| key}.each do |key,value| -%>
-<%= key %> = <% if value.is_a?(Array) %><%= value.join(', ') %><% else %><%= value %><% end %>
-<% end -%>
+# <% end -%>
+# <% if ! @extra_main_parameters.empty? -%>
+# # Parameters set using 'extra_main_parameters'
+# <% @extra_main_parameters.sort_by {|key,value| key}.each do |key,value| -%>
+# <%= key %> = <% if value.is_a?(Array) %><%= value.join(', ') %><% else %><%= value %><% end %>
+# <% end -%>
 
-<% end -%>
+# <% end -%>
