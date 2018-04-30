@@ -827,8 +827,8 @@ smtpd_recipient_restrictions = check_recipient_access <%= @smtpd_recipient_restr
 # message_size_limit = <%= @message_size_limit %>
 
 # <% end -%>
-# # Make nobody redirect to /dev/null work
-# allow_mail_to_files = alias
+# Make nobody redirect to /dev/null work
+allow_mail_to_files = alias
 
 # <% if @virtual_alias_domains -%>
 # virtual_alias_domains =
@@ -932,12 +932,12 @@ smtpd_recipient_restrictions = check_recipient_access <%= @smtpd_recipient_restr
 # <% end -%>
 
 # <% end -%>
-# body_checks = regexp:<%= @config_directory %>/body_checks
+body_checks = regexp:<%= @config_directory %>/body_checks
 
-# <% if @canonical_maps -%>
-# canonical_maps = <%= @canonical_maps %>
+<% if @canonical_maps -%>
+canonical_maps = regexp:<%= @canonical_maps %>/canonical
 
-# <% end -%>
+<% end -%>
 # <% if @sender_canonical_maps -%>
 # sender_canonical_maps = <%= @sender_canonical_maps %>
 
